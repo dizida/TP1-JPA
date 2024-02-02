@@ -11,6 +11,7 @@ import lombok.*;
 // cf. https://examples.javacodegeeks.com/spring-boot-with-lombok/
 @Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
 @Entity // Une entité JPA
+
 public class Country {
     // Identifiant technique
     @Id  @GeneratedValue(strategy = GenerationType.IDENTITY) 
@@ -23,4 +24,11 @@ public class Country {
     @Column(unique=true)
     @NonNull
     private String name;
+    
+     // Dans la classe "Country.java"
+     @OneToMany(mappedBy="country")
+     // Essayer sans "mappedBy" pour voir le schémma relationnel généré c'est la même relation que pour ville
+     // @OneToMany
+     @ToString.Exclude
+     private List<City> cities = new ArrayList<>();
 }

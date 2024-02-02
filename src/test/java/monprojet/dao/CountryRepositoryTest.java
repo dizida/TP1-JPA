@@ -6,6 +6,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
 import monprojet.entity.*;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -40,4 +41,7 @@ public class CountryRepositoryTest {
         assertEquals(combienDePaysDansLeJeuDeTest, nombre, "On doit trouver 4 pays" );
     }
 
+    @Test
+    void testpop() {assertEquals(21,countryDAO.popPays(1) );}
+   
 }
